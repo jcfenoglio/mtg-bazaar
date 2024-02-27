@@ -5,7 +5,7 @@ const val SETTINGS_SCREEN = "SettingsScreen"
 const val LOGIN_SCREEN = "LoginScreen"
 const val SIGN_UP_SCREEN = "SignUpScreen"
 const val TRADE_SCREEN = "TradeScreen"
-const val BINDERS_SCREEN = "BindersScreen"
+const val COLLECTION_SCREEN = "CollectionScreen"
 const val EDIT_BINDER_SCREEN = "EditBinderScreen"
 
 const val BINDER_ID = "binderId"
