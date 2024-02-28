@@ -22,6 +22,8 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.mtgbazaar.common.snackbar.SnackbarManager
+import com.example.mtgbazaar.screens.login.LoginScreen
+import com.example.mtgbazaar.screens.splash.SplashScreen
 import com.example.mtgbazaar.ui.theme.MTGBazaarTheme
 import kotlinx.coroutines.CoroutineScope
 
@@ -77,5 +79,10 @@ fun resources(): Resources {
 
 fun NavGraphBuilder.mtgBazaarGraph(appState: MTGBazaarAppState) {
     composable(SPLASH_SCREEN) {
+        SplashScreen(openAndPopUp = { route, popUp -> appState.navigateAndPopUp(route, popUp)})
+    }
+
+    composable(LOGIN_SCREEN) {
+        LoginScreen(openAndPopUp = { route, popUp -> appState.navigateAndPopUp(route, popUp) })
     }
 }
