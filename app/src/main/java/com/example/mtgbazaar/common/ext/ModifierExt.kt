@@ -16,3 +16,11 @@ fun Modifier.basicButton(): Modifier {
 fun Modifier.fieldModifier(): Modifier {
     return this.fillMaxWidth().padding(16.dp, 4.dp)
 }
+
+fun Modifier.spacer(): Modifier {
+    return this.fillMaxWidth().padding(12.dp)
+}
+
+fun Modifier.card(): Modifier {
+    return this.padding(16.dp, 0.dp, 16.dp, 8.dp)
+}
