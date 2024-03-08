@@ -10,6 +10,9 @@
     <string name="try_again">Try again</string>
     <string name="ok">OK</string>
 
+    <!-- CollectionScreen -->
+    <string name="collection_title">My Collection</string>
+
     <!-- LoginScreen -->
     <string name="sign_in">Sign in</string>
     <string name="login_details">Enter your login details</string>
