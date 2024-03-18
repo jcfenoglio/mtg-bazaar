@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.mtgbazaar.common.ext.dropdownSelector
 
 @Composable
 fun RegularCardEditor(
@@ -67,5 +68,21 @@ private fun CardEditor(
 
             Icon(painter = painterResource(icon), contentDescription = "Icon", tint = highlightColor)
         }
+    }
+}
+
+@Composable
+private fun CardSelector(
+    @StringRes label: Int,
+    options: List<String>,
+    selection: String,
+    modifier: Modifier,
+    onNewValue: (String) -> Unit
+) {
+    Card(
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.onPrimary),
+        modifier = modifier
+    ) {
+        DropdownSelector(label, options, selection, Modifier.dropdownSelector() , onNewValue)
     }
 }

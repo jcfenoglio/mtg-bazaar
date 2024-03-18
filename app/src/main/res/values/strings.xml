@@ -13,6 +13,12 @@
     <!-- CollectionScreen -->
     <string name="collection_title">My Collection</string>
 
+    <!-- EditBinderScreen -->
+    <string name="edit_binder">Edit your binder</string>
+    <string name="name">Name</string>
+    <string name="description">Description</string>
+    <string name="tradeable">Trade from this binder?</string>
+
     <!-- LoginScreen -->
     <string name="sign_in">Sign in</string>
     <string name="login_details">Enter your login details</string>
