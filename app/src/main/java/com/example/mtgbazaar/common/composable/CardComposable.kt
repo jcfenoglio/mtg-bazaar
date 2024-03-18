@@ -72,7 +72,7 @@ private fun CardEditor(
 }
 
 @Composable
-private fun CardSelector(
+fun CardSelector(
     @StringRes label: Int,
     options: List<String>,
     selection: String,

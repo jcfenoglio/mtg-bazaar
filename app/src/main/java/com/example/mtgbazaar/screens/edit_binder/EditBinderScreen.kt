@@ -10,7 +10,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.mtgbazaar.common.composable.ActionToolbar
 import com.example.mtgbazaar.common.composable.BasicField
-import com.example.mtgbazaar.common.composable.DropdownSelector
+import com.example.mtgbazaar.common.composable.CardSelector
 import com.example.mtgbazaar.common.ext.card
 import com.example.mtgbazaar.common.ext.fieldModifier
 import com.example.mtgbazaar.common.ext.spacer
@@ -68,7 +68,7 @@ fun EditBinderScreenContent(
         Spacer(modifier = Modifier.spacer())
 
         val flagSelection = EditTradeFlagOption.getByCheckedState(binder.isTradeable).name
-        DropdownSelector(
+        CardSelector(
             label = AppText.tradeable,
             options = EditTradeFlagOption.getOptions(),
             selection = flagSelection,

@@ -16,7 +16,7 @@ enum class EditTradeFlagOption {
 
         fun getOptions(): List<String> {
             val options = mutableListOf<String>()
-            values().forEach { flagOption -> options.add(flagOption.name) }
+            entries.forEach { flagOption -> options.add(flagOption.name) }
             return options
         }
     }
