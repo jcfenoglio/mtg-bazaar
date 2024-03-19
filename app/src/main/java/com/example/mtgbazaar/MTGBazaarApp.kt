@@ -35,7 +35,7 @@ import kotlinx.coroutines.CoroutineScope
 @Composable
 fun MTGBazaarApp() {
     MTGBazaarTheme {
-        Surface(color = MaterialTheme.colorScheme.background) {
+        Surface(color = MaterialTheme.colorScheme.surface) {
             val appState = rememberAppState()
 
             Scaffold(

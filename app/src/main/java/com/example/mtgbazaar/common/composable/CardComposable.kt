@@ -48,7 +48,7 @@ private fun CardEditor(
     onEditClick: () -> Unit
 ) {
     Card(
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.onPrimary),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondaryContainer),
         modifier = modifier,
         onClick = onEditClick
     ) {
@@ -80,7 +80,7 @@ fun CardSelector(
     onNewValue: (String) -> Unit
 ) {
     Card(
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.onPrimary),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondaryContainer),
         modifier = modifier
     ) {
         DropdownSelector(label, options, selection, Modifier.dropdownSelector() , onNewValue)

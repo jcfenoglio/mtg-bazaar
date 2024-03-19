@@ -59,13 +59,13 @@ fun DropdownSelector(
 @Composable
 private fun dropdownColors(): TextFieldColors {
     return ExposedDropdownMenuDefaults.textFieldColors(
-        focusedContainerColor = MaterialTheme.colorScheme.onPrimary,
-        unfocusedContainerColor = MaterialTheme.colorScheme.onPrimary,
+        focusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
+        unfocusedContainerColor = MaterialTheme.colorScheme.background,
         focusedIndicatorColor = Color.Transparent,
         unfocusedIndicatorColor = Color.Transparent,
-        focusedTrailingIconColor = MaterialTheme.colorScheme.onSurface,
+        focusedTrailingIconColor = MaterialTheme.colorScheme.onSecondaryContainer,
         unfocusedTrailingIconColor = MaterialTheme.colorScheme.onSurface,
-        focusedLabelColor = MaterialTheme.colorScheme.primary,
-        unfocusedLabelColor = MaterialTheme.colorScheme.primary
+        focusedLabelColor = MaterialTheme.colorScheme.onSecondaryContainer,
+        unfocusedLabelColor = MaterialTheme.colorScheme.onSurface
     )
 }
