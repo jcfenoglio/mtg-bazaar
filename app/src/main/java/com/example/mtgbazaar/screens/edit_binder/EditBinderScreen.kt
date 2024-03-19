@@ -7,7 +7,6 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.Wallpapers
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.mtgbazaar.common.composable.ActionToolbar
 import com.example.mtgbazaar.common.composable.BasicField
