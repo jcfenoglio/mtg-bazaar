@@ -2,6 +2,7 @@ package com.example.mtgbazaar.model.service.impl
 
 import com.example.mtgbazaar.model.User
 import com.example.mtgbazaar.model.service.AccountService
+import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
@@ -36,8 +37,11 @@ class AccountServiceImpl @Inject constructor(private val auth: FirebaseAuth) : A
         auth.signInAnonymously().await()
     }
 
-    override suspend fun linkAccount(email: String, password: String) {
-        //TODO
+    override suspend fun linkAccount(email: String, password: String): Unit =
+        trace(LINK_ACCOUNT_TRACE) {
+        val credential = EmailAuthProvider.getCredential(email, password)
+
+        auth.currentUser!!.linkWithCredential(credential).await()
     }
 
     override suspend fun deleteAccount() {

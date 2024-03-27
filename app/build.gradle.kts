@@ -71,12 +71,10 @@ dependencies {
     //Firebase
     implementation(platform("com.google.firebase:firebase-bom:32.7.4"))
     implementation("com.google.firebase:firebase-analytics")
-    implementation("com.google.firebase:firebase-crashlytics")
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-firestore")
     implementation("com.google.firebase:firebase-perf")
     implementation("com.google.firebase:firebase-config")
-    implementation("com.google.firebase:firebase-messaging")
 
     //Test
     testImplementation("junit:junit:4.13.2")

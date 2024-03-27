@@ -1,6 +1,8 @@
 package com.example.mtgbazaar.screens.sign_up
 
 import androidx.compose.runtime.mutableStateOf
+import com.example.mtgbazaar.SETTINGS_SCREEN
+import com.example.mtgbazaar.SIGN_UP_SCREEN
 import com.example.mtgbazaar.common.ext.*
 import com.example.mtgbazaar.common.snackbar.SnackbarManager
 import com.example.mtgbazaar.model.service.AccountService
@@ -53,7 +55,8 @@ class SignUpViewModel @Inject constructor(
         }
 
         launchCatching {
-            // TODO
+            accountService.linkAccount(email, password)
+            openAndPopUp(SETTINGS_SCREEN, SIGN_UP_SCREEN)
         }
     }
 }
