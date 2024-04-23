@@ -81,7 +81,7 @@ fun CollectionScreenContent(
                     BinderItem(
                         binder = binderItem,
                         options = listOf(),
-                        onActionClick = { action -> onBinderActionClick(openScreen, binderItem, action)}
+                        onActionClick = { action -> onBinderActionClick(openScreen, binderItem, action) }
                     )
                 }
             }
