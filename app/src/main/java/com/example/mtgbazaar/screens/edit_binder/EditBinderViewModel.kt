@@ -38,7 +38,7 @@ class EditBinderViewModel @Inject constructor(
 
     fun onTradeableToggle(newValue: String) {
         val newFlagOption = EditTradeFlagOption.getBooleanValue(newValue)
-        binder.value = binder.value.copy(isTradeable = newFlagOption)
+        binder.value = binder.value.copy(tradeable = newFlagOption)
     }
 
     fun onDoneClick(popUpScreen: () -> Unit) {

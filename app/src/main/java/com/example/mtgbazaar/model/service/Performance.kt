@@ -1,4 +1,4 @@
-package com.example.mtgbazaar.model.service.impl
+package com.example.mtgbazaar.model.service
 
 import com.google.firebase.perf.metrics.Trace
 import com.google.firebase.perf.trace

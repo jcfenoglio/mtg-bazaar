@@ -20,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.mtgbazaar.common.composable.ActionToolbar
 import com.example.mtgbazaar.common.ext.smallSpacer
 import com.example.mtgbazaar.common.ext.toolbarActions
@@ -27,13 +28,17 @@ import com.example.mtgbazaar.model.Binder
 import com.example.mtgbazaar.ui.theme.MTGBazaarTheme
 import com.example.mtgbazaar.R.string as AppText
 import com.example.mtgbazaar.R.drawable as AppIcon
-
+// TODO: make sure making an account and adding a new binder works, then implement cards within binders
 @Composable
 fun CollectionScreen(
     openScreen: (String) -> Unit,
     viewModel: CollectionViewModel = hiltViewModel()
 ) {
+    // TODO: fix this once the dependency moves to stable branch
+    val collection = viewModel.collection.collectAsStateWithLifecycle(emptyList(), lifecycleOwner = androidx.compose.ui.platform.LocalLifecycleOwner.current)
+
     CollectionScreenContent(
+        collection = collection.value,
         onAddClick = viewModel::onAddClick,
         onSettingsClick = viewModel::onSettingsClick,
         onBinderActionClick = viewModel::onBinderActionClick,
@@ -47,6 +52,7 @@ fun CollectionScreen(
 @Composable
 fun CollectionScreenContent(
     modifier: Modifier = Modifier,
+    collection: List<Binder>,
     onAddClick: ((String) -> Unit) -> Unit,
     onSettingsClick: ((String) -> Unit) -> Unit,
     onBinderActionClick: ((String) -> Unit, Binder, String) -> Unit,
@@ -77,7 +83,7 @@ fun CollectionScreenContent(
             Spacer(modifier = Modifier.smallSpacer())
 
             LazyColumn {
-                items(items = emptyList<Binder>(), key = { it.id }) { binderItem ->
+                items(items = collection, key = { it.id }) { binderItem ->
                     BinderItem(
                         binder = binderItem,
                         options = listOf(),
@@ -92,8 +98,16 @@ fun CollectionScreenContent(
 @Preview(showBackground = true)
 @Composable
 fun CollectionScreenPreview() {
+    val binder = Binder(
+        id = "1",
+        name = "Test Binder",
+        description = "This is a test binder with real cards",
+        tradeable = false
+    )
+
     MTGBazaarTheme {
         CollectionScreenContent(
+            collection = listOf(binder),
             onAddClick = { },
             onSettingsClick = { },
             onBinderActionClick = { _, _, _ -> },

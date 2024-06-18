@@ -3,10 +3,13 @@ package com.example.mtgbazaar.model.service.impl
 import com.example.mtgbazaar.model.Binder
 import com.example.mtgbazaar.model.service.AccountService
 import com.example.mtgbazaar.model.service.StorageService
+import com.example.mtgbazaar.model.service.trace
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.dataObjects
 import com.google.firebase.firestore.toObject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emptyFlow
+import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
@@ -15,7 +18,10 @@ class StorageServiceImpl @Inject constructor(
     private val auth: AccountService
 ) : StorageService {
     override val binders: Flow<List<Binder>>
-        get() = emptyFlow()
+        get() =
+            auth.currentUser.flatMapLatest {user ->
+                firestore.collection(BINDER_COLLECTION).whereEqualTo(USER_ID_FIELD, user.id).dataObjects()
+            }
 
     override suspend fun getBinder(binderId: String): Binder? =
         firestore.collection(BINDER_COLLECTION).document(binderId).get().await().toObject()

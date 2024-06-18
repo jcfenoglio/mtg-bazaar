@@ -22,7 +22,7 @@ class ConfigurationServiceImpl @Inject constructor() : ConfigurationService {
     }
     override suspend fun fetchConfiguration(): Boolean = true
 
-    override val isShowTaskEditButtonConfig: Boolean
+    override val isShowBinderEditButtonConfig: Boolean
         get() = true
 
     companion object {

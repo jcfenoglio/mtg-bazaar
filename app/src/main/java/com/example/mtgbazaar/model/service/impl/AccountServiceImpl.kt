@@ -2,6 +2,7 @@ package com.example.mtgbazaar.model.service.impl
 
 import com.example.mtgbazaar.model.User
 import com.example.mtgbazaar.model.service.AccountService
+import com.example.mtgbazaar.model.service.trace
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.channels.awaitClose

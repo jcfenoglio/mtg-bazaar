@@ -67,7 +67,7 @@ fun EditBinderScreenContent(
 
         Spacer(modifier = Modifier.spacer())
 
-        val flagSelection = EditTradeFlagOption.getByCheckedState(binder.isTradeable).name
+        val flagSelection = EditTradeFlagOption.getByCheckedState(binder.tradeable).name
         CardSelector(
             label = AppText.tradeable,
             options = EditTradeFlagOption.getOptions(),
@@ -86,7 +86,7 @@ fun EditBinderScreenPreview() {
     val binder = Binder(
         name = "Binder Name",
         description = "Binder description",
-        isTradeable = true
+        tradeable = true
     )
 
     MTGBazaarTheme {

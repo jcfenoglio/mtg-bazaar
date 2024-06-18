@@ -6,6 +6,6 @@ data class Binder(
     @DocumentId val id: String = "",
     val name: String = "",
     val description: String = "",
-    val isTradeable: Boolean = false,
+    val tradeable: Boolean = false,
     val userId: String = ""
 )

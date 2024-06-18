@@ -21,7 +21,7 @@ class CollectionViewModel @Inject constructor(
 ) : MTGBazaarViewModel(logService){
     val options = mutableStateOf<List<String>>(listOf())
 
-    val collection = emptyFlow<List<Binder>>()
+    val collection = storageService.binders
 
     fun loadBinderOptions() {
         // TODO
