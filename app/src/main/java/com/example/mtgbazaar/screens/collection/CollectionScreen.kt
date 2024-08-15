@@ -2,7 +2,6 @@ package com.example.mtgbazaar.screens.collection
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -22,13 +21,12 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.mtgbazaar.common.composable.ActionToolbar
-import com.example.mtgbazaar.common.ext.smallSpacer
 import com.example.mtgbazaar.common.ext.toolbarActions
 import com.example.mtgbazaar.model.Binder
 import com.example.mtgbazaar.ui.theme.MTGBazaarTheme
 import com.example.mtgbazaar.R.string as AppText
 import com.example.mtgbazaar.R.drawable as AppIcon
-// TODO: make sure making an account and adding a new binder works, then implement cards within binders
+
 @Composable
 fun CollectionScreen(
     openScreen: (String) -> Unit,
@@ -55,7 +53,7 @@ fun CollectionScreenContent(
     collection: List<Binder>,
     onAddClick: ((String) -> Unit) -> Unit,
     onSettingsClick: ((String) -> Unit) -> Unit,
-    onBinderActionClick: ((String) -> Unit, Binder, String) -> Unit,
+    onBinderActionClick: ((String) -> Unit, Binder) -> Unit,
     openScreen: (String) -> Unit
 ) {
     Scaffold(
@@ -80,14 +78,12 @@ fun CollectionScreenContent(
                 endAction = { onSettingsClick(openScreen) }
             )
 
-            Spacer(modifier = Modifier.smallSpacer())
-
             LazyColumn {
                 items(items = collection, key = { it.id }) { binderItem ->
                     BinderItem(
                         binder = binderItem,
                         options = listOf(),
-                        onActionClick = { action -> onBinderActionClick(openScreen, binderItem, action) }
+                        onActionClick = { onBinderActionClick(openScreen, binderItem) }
                     )
                 }
             }
@@ -104,13 +100,19 @@ fun CollectionScreenPreview() {
         description = "This is a test binder with real cards",
         tradeable = false
     )
+    val binder2 = Binder(
+        id = "2",
+        name = "Test Binder",
+        description = "This is a test binder with real cards",
+        tradeable = false
+    )
 
     MTGBazaarTheme {
         CollectionScreenContent(
-            collection = listOf(binder),
+            collection = listOf(binder, binder2),
             onAddClick = { },
             onSettingsClick = { },
-            onBinderActionClick = { _, _, _ -> },
+            onBinderActionClick = { _, _ -> },
             openScreen = { }
         )
     }

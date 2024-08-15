@@ -1,6 +1,7 @@
 package com.example.mtgbazaar.model.service
 
 import com.example.mtgbazaar.model.Binder
+import com.example.mtgbazaar.model.MagicCard
 import kotlinx.coroutines.flow.Flow
 
 interface StorageService {
@@ -9,4 +10,6 @@ interface StorageService {
     suspend fun saveBinder(binder: Binder): String
     suspend fun updateBinder(binder: Binder)
     suspend fun deleteBinder(binderId: String)
+
+    val binderCards: Flow<List<MagicCard>>
 }

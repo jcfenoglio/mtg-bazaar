@@ -23,6 +23,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.example.mtgbazaar.common.snackbar.SnackbarManager
+import com.example.mtgbazaar.screens.binder.BinderScreen
 import com.example.mtgbazaar.screens.collection.CollectionScreen
 import com.example.mtgbazaar.screens.edit_binder.EditBinderScreen
 import com.example.mtgbazaar.screens.login.LoginScreen
@@ -104,6 +105,18 @@ fun NavGraphBuilder.mtgBazaarGraph(appState: MTGBazaarAppState) {
 
     composable(COLLECTION_SCREEN) {
         CollectionScreen(openScreen = { route -> appState.navigate(route) })
+    }
+    
+    composable(
+        route = "$BINDER_SCREEN$BINDER_ID_ARG",
+        arguments = listOf(navArgument(BINDER_ID) {
+            nullable = true
+            defaultValue = null
+        })
+    ) {
+        BinderScreen(
+            openScreen = { route -> appState.navigate(route) },
+            popUpScreen = { appState.popUp() })
     }
 
     composable(

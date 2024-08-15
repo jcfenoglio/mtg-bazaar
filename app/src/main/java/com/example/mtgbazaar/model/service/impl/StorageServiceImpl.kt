@@ -1,6 +1,7 @@
 package com.example.mtgbazaar.model.service.impl
 
 import com.example.mtgbazaar.model.Binder
+import com.example.mtgbazaar.model.MagicCard
 import com.example.mtgbazaar.model.service.AccountService
 import com.example.mtgbazaar.model.service.StorageService
 import com.example.mtgbazaar.model.service.trace
@@ -8,7 +9,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.dataObjects
 import com.google.firebase.firestore.toObject
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.emptyFlow
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
@@ -40,6 +40,9 @@ class StorageServiceImpl @Inject constructor(
     override suspend fun deleteBinder(binderId: String) {
         firestore.collection(BINDER_COLLECTION).document(binderId).delete().await()
     }
+
+    override val binderCards: Flow<List<MagicCard>>
+        get() = TODO("Not yet implemented")
 
     companion object {
         private const val USER_ID_FIELD = "userId"

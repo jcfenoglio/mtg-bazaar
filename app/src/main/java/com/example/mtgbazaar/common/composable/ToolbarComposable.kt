@@ -43,5 +43,35 @@ fun ActionToolbar(
     )
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun ActionTextToolbar(
+    title: String,
+    @DrawableRes endActionIcon: Int,
+    @DrawableRes navActionIcon: Int,
+    modifier: Modifier,
+    endAction: () -> Unit,
+    navAction: () -> Unit
+) {
+    TopAppBar(
+        title = { Text(title) },
+        colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
+        actions = {
+            Box(modifier) {
+                IconButton(onClick = endAction) {
+                    Icon(painter = painterResource(endActionIcon), contentDescription = "Action")
+                }
+            }
+        },
+        navigationIcon = {
+            Box(modifier) {
+                IconButton(onClick = navAction) {
+                    Icon(painter = painterResource(navActionIcon), contentDescription = "Back")
+                }
+            }
+        }
+    )
+}
+
 
 
